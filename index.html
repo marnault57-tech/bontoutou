@@ -98,14 +98,35 @@ section{padding-block:72px}
 .cover.fit{padding:0;box-shadow:0 6px 18px rgba(24,38,63,.18)}
 .cover.fit::after{display:none}
 .guides.duo{grid-template-columns:1fr 1fr}
-.guides.duo .guide{display:grid;grid-template-columns:42% 1fr;grid-template-rows:1fr auto;column-gap:22px;row-gap:16px;align-items:start}
-.guides.duo .cover{grid-row:1/3}
+.guides.duo .guide{display:grid;grid-template-columns:42% 1fr;grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:14px;align-items:start}
+.guides.duo .cover{grid-row:1/4}
+.guides.duo .fmt{margin-top:0}
 .guides.duo .guide p{align-self:start}
 .guides.duo .buy{align-self:end}
 .guides.duo .cover h3{font-size:1.35rem}
 @media (max-width:980px){.guides.duo{grid-template-columns:1fr;max-width:640px}}
 @media (max-width:520px){.guides.duo .guide{display:flex}}
 .kids{background:var(--tint)}
+.btn.amz{background:var(--ink);color:var(--bg)}
+.fmt{font-size:.85rem;font-weight:700;color:var(--ink)!important;flex:0 0 auto!important;margin-top:-6px}
+.broches{padding-block:56px;background:var(--surface);border-block:1px solid var(--line)}
+.brhead{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.brhead h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;margin-top:8px}
+.brhead p:not(.eyebrow){color:var(--muted);margin:14px 0 22px;max-width:28em}
+.shelf{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:end}
+.shelf a{display:flex;flex-direction:column;gap:6px;text-decoration:none}
+.shelf .book{position:relative;display:flex;align-items:flex-end;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:var(--cover1);color:#fff;padding:10px;box-shadow:0 8px 20px rgba(24,38,63,.18);transition:transform .15s}
+.shelf li:nth-child(1) .book{background:#c0546b}.shelf li:nth-child(2) .book{background:#1f6f78}.shelf li:nth-child(3) .book{background:#b8762a}.shelf li:nth-child(4) .book{background:#5b4a8a}
+.shelf .book b{font-family:var(--display);font-size:.95rem;line-height:1.1}
+.shelf .book img{display:block;width:100%;height:auto}
+.shelf .book:has(img){padding:0;aspect-ratio:auto;background:none}
+.shelf .book:has(img) b{display:none}
+.shelf a:hover .book{transform:translateY(-4px)}
+.shelf strong{font-size:.9rem;line-height:1.25;margin-top:4px}
+.shelf small{font-size:.78rem;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.shelf .book{transition:none}.shelf a:hover .book{transform:none}}
+@media (max-width:860px){.brhead{grid-template-columns:1fr;gap:28px}}
+@media (max-width:560px){.shelf{grid-template-columns:repeat(2,1fr)}}
 .noel{margin-top:22px;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;color:var(--muted);text-decoration:none;max-width:34em}
 .noel:hover{color:var(--ink)}
 .noel span{flex:none;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:#b23a3a;color:#fff}
@@ -204,6 +225,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
       Bon Toutou
     </a>
     <ul>
+      <li><a href="#broches">Livres brochés</a></li>
       <li><a href="#guides">Les guides</a></li>
       <li><a href="#enfants">Enfants</a></li>
       <li><a href="#imprimables">Carnet et quiz</a></li>
@@ -219,12 +241,12 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
     <div>
       <p class="eyebrow">Guides pratiques pour maîtres de chien</p>
       <h1 style="margin-top:14px">Un chien bien dans ses pattes, <em>un maître serein.</em></h1>
-      <p class="lede">Les guides malins pour bien vivre avec son chien, et des livres pour les enfants qui l'adorent. Des conseils clairs et des méthodes douces, en PDF sur Etsy, en Kindle ou en livre papier sur Amazon.</p>
+      <p class="lede">Les guides malins pour bien vivre avec son chien, et des livres pour les enfants qui l'adorent. En livre broché et en Kindle sur Amazon, ou en PDF à imprimer sur Etsy.</p>
       <div class="ctas">
+        <a class="btn amz" href="https://www.amazon.fr/e/B0HR225QPC" target="_blank" rel="noopener">Mes livres sur Amazon →</a>
         <a class="btn" href="https://www.etsy.com/fr/shop/BonToutouEditions" target="_blank" rel="noopener">Boutique Etsy →</a>
-        <a class="btn ghost" href="#enfants">Livres pour enfants</a>
       </div>
-      <a class="noel" href="#enfants"><span>Noël</span>L'Enquête de l'Avent : 24 énigmes avec un chien détective, une par jour jusqu'au 24 décembre →</a>
+      <a class="noel" href="#enfants"><span>Noël</span>L'Enquête de l'Avent : 24 énigmes avec un chien détective, en livre broché sur Amazon ou en PDF à imprimer →</a>
     </div>
     <div class="tag-stage" aria-hidden="true">
       <svg viewBox="0 0 300 340">
@@ -244,6 +266,33 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
     </div>
   </div>
 </header>
+
+<section class="broches" id="broches" aria-labelledby="broches-titre">
+  <div class="wrap">
+    <div class="brhead">
+      <div>
+        <p class="eyebrow">Livrés chez vous par Amazon</p>
+        <h2 id="broches-titre">Nos livres brochés</h2>
+        <p>De vrais livres en papier, imprimés et livrés par Amazon. Parfaits à offrir, à glisser sous le sapin ou à lire avant de dormir.</p>
+        <a class="btn amz" href="https://www.amazon.fr/e/B0HR225QPC" target="_blank" rel="noopener">Tous mes livres sur Amazon →</a>
+      </div>
+      <ul class="shelf">
+        <li><a href="https://www.amazon.fr/dp/B0HR588V4F" target="_blank" rel="noopener">
+          <span class="book"><img src="https://m.media-amazon.com/images/I/51oUMLJsgYL._SL500_.jpg" alt="Couverture du livre broché « Toutou et le doudou perdu »" loading="lazy" decoding="async" onerror="this.remove()"><b>Toutou et le doudou perdu</b></span>
+          <strong>Toutou et le doudou perdu</strong><small>Album · 32 pages</small></a></li>
+        <li><a href="https://www.amazon.fr/dp/B0HQVMJC4K" target="_blank" rel="noopener">
+          <span class="book"><img src="https://m.media-amazon.com/images/I/514KXntkxLL._SL500_.jpg" alt="Couverture du livre broché « L'Enquête de l'Avent »" loading="lazy" decoding="async" onerror="this.remove()"><b>L'Enquête de l'Avent</b></span>
+          <strong>L'Enquête de l'Avent</strong><small>Jeu de Noël · 32 pages</small></a></li>
+        <li><a href="https://www.amazon.fr/dp/B0HR21MJZ7" target="_blank" rel="noopener">
+          <span class="book"><img src="https://m.media-amazon.com/images/I/51lZMZ1koUL._SL500_.jpg" alt="Couverture du livre broché « Les aventures du petit chiot »" loading="lazy" decoding="async" onerror="this.remove()"><b>Les aventures du petit chiot</b></span>
+          <strong>Les aventures du petit chiot</strong><small>Coloriages et jeux · 44 pages</small></a></li>
+        <li><a href="https://www.amazon.fr/dp/B0HQVN39ZK" target="_blank" rel="noopener">
+          <span class="book"><img src="https://m.media-amazon.com/images/I/51p53ci-MYL._SL500_.jpg" alt="Couverture du livre broché « Carnet de santé de mon chien »" loading="lazy" decoding="async" onerror="this.remove()"><b>Carnet de santé de mon chien</b></span>
+          <strong>Carnet de santé de mon chien</strong><small>Carnet · 48 pages</small></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <section id="guides">
   <div class="wrap">
@@ -302,7 +351,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
         <p class="eyebrow">Pour les enfants</p>
         <h2>Bon Toutou, le héros des petits</h2>
       </div>
-      <p>Des livres où Bon Toutou mène l'enquête, cherche un doudou ou se laisse colorier. En livre papier livré par Amazon, ou en PDF à imprimer dès l'achat sur Etsy.</p>
+      <p>Des livres où Bon Toutou mène l'enquête, cherche un doudou ou se laisse colorier. En livre broché livré chez vous par Amazon, ou en PDF à imprimer dès l'achat sur Etsy.</p>
     </div>
     <div class="guides">
       <article class="guide">
@@ -312,7 +361,8 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
           <h3>Toutou et le doudou perdu</h3>
         </div>
         <p>Une histoire tendre sur l'amitié, à lire le soir avant de dormir : Bon Toutou part à la recherche d'un doudou perdu.</p>
-        <div class="buy"><a class="shop amz" href="https://www.amazon.fr/dp/B0HR588V4F" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
+        <p class="fmt">Livre broché · 32 pages · 21,6 × 21,6 cm</p>
+        <div class="buy"><a class="shop amz" href="https://www.amazon.fr/dp/B0HR588V4F" target="_blank" rel="noopener"><span>Broché</span>Amazon</a></div>
       </article>
       <article class="guide">
         <div class="cover c5">
@@ -321,8 +371,9 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
           <h3>Calendrier de l'Avent enquête</h3>
         </div>
         <p>Un escape game de Noël : 24 énigmes, une par jour, à résoudre avec un chien détective jusqu'au 24 décembre.</p>
-        <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4609748369/calendrier-de-lavent-enquete-a-imprimer" target="_blank" rel="noopener"><span>PDF</span>Etsy</a>
-          <a class="shop amz" href="https://www.amazon.fr/dp/B0HQVMJC4K" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
+        <p class="fmt">Livre broché · 32 pages · format A4</p>
+        <div class="buy"><a class="shop amz" href="https://www.amazon.fr/dp/B0HQVMJC4K" target="_blank" rel="noopener"><span>Broché</span>Amazon</a>
+          <a class="shop etsy" href="https://www.etsy.com/fr/listing/4609748369/calendrier-de-lavent-enquete-a-imprimer" target="_blank" rel="noopener"><span>PDF</span>Etsy</a></div>
       </article>
       <article class="guide">
         <div class="cover c6">
@@ -331,8 +382,9 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
           <h3>Livre de coloriage chiot</h3>
         </div>
         <p>20 dessins de chiots à colorier, à imprimer en A4 ou US Letter autant de fois que vous voulez. La version papier Amazon ajoute 20 petits jeux de maternelle.</p>
-        <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4609073049/livre-de-coloriage-chiot-a-imprimer-20" target="_blank" rel="noopener"><span>PDF</span>Etsy</a>
-          <a class="shop amz" href="https://www.amazon.fr/dp/B0HR21MJZ7" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
+        <p class="fmt">Livre broché · 44 pages</p>
+        <div class="buy"><a class="shop amz" href="https://www.amazon.fr/dp/B0HR21MJZ7" target="_blank" rel="noopener"><span>Broché</span>Amazon</a>
+          <a class="shop etsy" href="https://www.etsy.com/fr/listing/4609073049/livre-de-coloriage-chiot-a-imprimer-20" target="_blank" rel="noopener"><span>PDF</span>Etsy</a></div>
       </article>
     </div>
   </div>
@@ -355,8 +407,9 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
           <h3>Carnet de santé du chien</h3>
         </div>
         <p>Vaccins, vermifuges, antiparasitaires, courbe de poids et visites chez le vétérinaire, tout au même endroit. Une jolie idée de cadeau pour un propriétaire de chien.</p>
-        <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4610898436/carnet-de-sante-chien-a-imprimer-suivi" target="_blank" rel="noopener"><span>PDF</span>Etsy</a>
-          <a class="shop amz" href="https://www.amazon.fr/dp/B0HQVN39ZK" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
+        <p class="fmt">Livre broché · 48 pages · 15 × 23 cm</p>
+        <div class="buy"><a class="shop amz" href="https://www.amazon.fr/dp/B0HQVN39ZK" target="_blank" rel="noopener"><span>Broché</span>Amazon</a>
+          <a class="shop etsy" href="https://www.etsy.com/fr/listing/4610898436/carnet-de-sante-chien-a-imprimer-suivi" target="_blank" rel="noopener"><span>PDF</span>Etsy</a></div>
       </article>
       <article class="guide">
         <div class="cover c8">
@@ -499,7 +552,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
     <div class="head"><div><p class="eyebrow">Questions fréquentes</p><h2>Avant d'acheter</h2></div></div>
     <div class="faq">
       <details open><summary>Comment je reçois mon achat ?</summary><p>Sur Etsy (boutique BonToutouEditions), le PDF est téléchargeable dès que le paiement est validé, depuis votre compte Etsy. Sur Amazon, l'ebook arrive directement sur votre Kindle ou dans l'appli Kindle, et les livres papier sont livrés chez vous.</p></details>
-      <details><summary>Etsy ou Amazon, lequel choisir ?</summary><p>Prenez le PDF sur Etsy si vous voulez imprimer le guide ou cocher les check-lists sur papier. Prenez la version Kindle sur Amazon si vous lisez sur liseuse ou dans l'appli Kindle. Le contenu est le même.</p></details>
+      <details><summary>Amazon ou Etsy, lequel choisir ?</summary><p>Pour un vrai livre à offrir ou à garder, prenez le livre broché sur Amazon : il est imprimé et livré chez vous. Pour lire sur liseuse, prenez la version Kindle. Si vous préférez imprimer vous-même, autant de fois que vous voulez, prenez le PDF sur Etsy.</p></details>
       <details><summary>Existe-t-il des livres papier ?</summary><p>Oui. Le carnet de santé, l'Enquête de l'Avent, le coloriage et l'album « Toutou et le doudou perdu » existent en livre papier sur Amazon, livrés chez vous. Sur Etsy, tout est en PDF à imprimer autant de fois que vous voulez. Les guides 01 à 03 sont en PDF sur Etsy et en Kindle sur Amazon.</p></details>
       <details><summary>Mon chien est adulte, le guide 01 me sert-il ?</summary><p>Le guide 01 est centré sur le chiot. Pour un chien adulte, les guides 02 sur l'alimentation et 03 sur l'obéissance sont plus adaptés.</p></details>
       <details><summary>Par quel guide commencer ?</summary><p>Pour un chiot, commencez par le 01. Pour un chien adulte, le 03 pose les bases de l'obéissance. Le 02 sur l'alimentation convient à tous les âges.</p></details>
@@ -510,10 +563,10 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
 <section class="final">
   <div class="wrap">
     <div class="box">
-      <h2>Toute la collection vous attend sur Etsy et Amazon.</h2>
+      <h2>Toute la collection vous attend sur Amazon et Etsy.</h2>
       <div style="display:flex;flex-wrap:wrap;gap:12px">
-        <a class="btn" href="https://www.etsy.com/fr/shop/BonToutouEditions" target="_blank" rel="noopener">Aller sur Etsy →</a>
-        <a class="btn" href="https://www.amazon.fr/s?k=%22Les+guides+Bon+Toutou%22" target="_blank" rel="noopener">Aller sur Amazon →</a>
+        <a class="btn" href="https://www.amazon.fr/e/B0HR225QPC" target="_blank" rel="noopener">Brochés et Kindle sur Amazon →</a>
+        <a class="btn" href="https://www.etsy.com/fr/shop/BonToutouEditions" target="_blank" rel="noopener">PDF sur Etsy →</a>
       </div>
     </div>
   </div>
@@ -523,7 +576,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
   <div class="wrap">
     <span>© 2026 Bon Toutou · Guides pour maîtres de chien et livres pour enfants</span>
     <span><a href="#guides">Les guides</a> · <a href="#enfants">Enfants</a> · <a href="#imprimables">Carnet et quiz</a> · <a href="#outils">Outils gratuits</a></span>
-    <span><a href="https://www.etsy.com/fr/shop/BonToutouEditions" target="_blank" rel="noopener">Etsy : BonToutouEditions</a> · <a href="https://www.amazon.fr/s?k=%22Les+guides+Bon+Toutou%22" target="_blank" rel="noopener">Amazon</a></span>
+    <span><a href="https://www.etsy.com/fr/shop/BonToutouEditions" target="_blank" rel="noopener">Etsy : BonToutouEditions</a> · <a href="https://www.amazon.fr/e/B0HR225QPC" target="_blank" rel="noopener">Amazon : Mathieu A</a></span>
   </div>
 </footer>
 
