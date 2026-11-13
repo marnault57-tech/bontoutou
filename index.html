@@ -26,15 +26,16 @@
   --bg:#f1f5f9; --surface:#ffffff; --ink:#18263f; --muted:#56637a;
   --accent:#e2b93b; --accent-ink:#18263f; --band:#18263f; --band-ink:#f1f5f9; --line:#d5dde8;
   --cover1:#2f5d8a; --cover2:#3f7d5c; --cover3:#a34b3a;
+  --tint:#fbf1df;
   --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
   --body:"Nunito Sans", "Segoe UI", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0f1624; --surface:#172238; --ink:#e7edf5; --muted:#9aa8bd; --accent:#e9c556; --accent-ink:#18263f;
-  --band:#0a0f1a; --band-ink:#e7edf5; --line:#2a3852; color-scheme:dark}}
+  --band:#0a0f1a; --band-ink:#e7edf5; --line:#2a3852; --tint:#1a2335; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1624; --surface:#172238; --ink:#e7edf5; --muted:#9aa8bd; --accent:#e9c556; --accent-ink:#18263f;
-  --band:#0a0f1a; --band-ink:#e7edf5; --line:#2a3852; color-scheme:dark}
+  --band:#0a0f1a; --band-ink:#e7edf5; --line:#2a3852; --tint:#1a2335; color-scheme:dark}
 
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -51,7 +52,11 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-weight:600;font-size:.95rem}
 nav ul a{text-decoration:none;color:var(--muted)}
 nav ul a:hover{color:var(--ink)}
-@media (max-width:620px){nav ul{display:none}}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+nav .wrap{padding-block:14px}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:760px){nav .wrap{flex-direction:column;align-items:flex-start;gap:8px;padding-block:10px}nav ul{gap:18px;overflow-x:auto;max-width:100%;padding-bottom:4px;scrollbar-width:none;font-size:.9rem;white-space:nowrap}nav ul::-webkit-scrollbar{display:none}html{scroll-padding-top:100px}}
 
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:999px;background:var(--accent);color:var(--accent-ink);transition:transform .15s}
 .btn:hover{transform:translateY(-2px)}
@@ -66,7 +71,7 @@ nav ul a:hover{color:var(--ink)}
 .hero .ctas{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
 .tag-stage{position:relative;display:flex;justify-content:center}
 .tag-stage svg{width:100%;max-width:340px;height:auto}
-@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;gap:32px}.tag-stage svg{max-width:240px}}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;gap:32px;padding-block:24px 40px}.tag-stage{display:none}}
 
 /* Guides */
 section{padding-block:72px}
@@ -89,8 +94,18 @@ section{padding-block:72px}
 .c4{background:#5b4a8a}.c5{background:#1f6f78}.c6{background:#b8762a}.c7{background:#c0546b}.c8{background:#3c5a99}
 .cover img.real{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--bg);z-index:2;opacity:0;transition:opacity .3s}
 .cover img.real.ok{opacity:1}
-.guides.four{grid-template-columns:repeat(3,1fr)}
-@media (max-width:860px){.guides.four{grid-template-columns:1fr;max-width:460px}}
+.guides.duo{grid-template-columns:1fr 1fr}
+.guides.duo .guide{display:grid;grid-template-columns:42% 1fr;grid-template-rows:1fr auto;column-gap:22px;row-gap:16px;align-items:start}
+.guides.duo .cover{grid-row:1/3}
+.guides.duo .guide p{align-self:start}
+.guides.duo .buy{align-self:end}
+.guides.duo .cover h3{font-size:1.35rem}
+@media (max-width:980px){.guides.duo{grid-template-columns:1fr;max-width:640px}}
+@media (max-width:520px){.guides.duo .guide{display:flex}}
+.kids{background:var(--tint)}
+.noel{margin-top:22px;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;color:var(--muted);text-decoration:none;max-width:34em}
+.noel:hover{color:var(--ink)}
+.noel span{flex:none;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:#b23a3a;color:#fff}
 .cover .kind{font-family:var(--display);font-weight:600;font-size:1.15rem;margin-top:6px}
 .guide p{color:var(--muted);font-size:.98rem;flex:1}
 .guide .sub{display:block;color:var(--ink);font-weight:700;margin-bottom:4px}
@@ -187,7 +202,8 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
     </a>
     <ul>
       <li><a href="#guides">Les guides</a></li>
-      <li><a href="#imprimables">À imprimer</a></li>
+      <li><a href="#enfants">Enfants</a></li>
+      <li><a href="#imprimables">Carnet et quiz</a></li>
       <li><a href="#outils">Outils gratuits</a></li>
       <li><a href="#a-propos">À propos</a></li>
       <li><a href="#faq">Questions</a></li>
@@ -203,8 +219,9 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
       <p class="lede">Les guides malins pour bien vivre avec son chien, et des livres pour les enfants qui l'adorent. Des conseils clairs et des méthodes douces, en PDF sur Etsy, en Kindle ou en livre papier sur Amazon.</p>
       <div class="ctas">
         <a class="btn" href="https://www.etsy.com/fr/shop/BonToutouEditions" target="_blank" rel="noopener">Boutique Etsy →</a>
-        <a class="btn ghost" href="#imprimables">Livres pour enfants</a>
+        <a class="btn ghost" href="#enfants">Livres pour enfants</a>
       </div>
+      <a class="noel" href="#enfants"><span>Noël</span>L'Enquête de l'Avent : 24 énigmes avec un chien détective, une par jour jusqu'au 24 décembre →</a>
     </div>
     <div class="tag-stage" aria-hidden="true">
       <svg viewBox="0 0 300 340">
@@ -275,39 +292,29 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
   </div>
 </section>
 
-<section id="imprimables" style="padding-top:0">
+<section class="kids" id="enfants">
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="eyebrow">Pour le chien et les enfants</p>
-        <h2>Pour toute la famille</h2>
+        <p class="eyebrow">Pour les enfants</p>
+        <h2>Bon Toutou, le héros des petits</h2>
       </div>
-      <p>En PDF à imprimer chez vous dès l'achat sur Etsy, ou en livre papier livré par Amazon. Un quiz pour jouer en famille, et pour les plus petits, un album illustré avec Bon Toutou en héros.</p>
+      <p>Des livres où Bon Toutou mène l'enquête, cherche un doudou ou se laisse colorier. En livre papier livré par Amazon, ou en PDF à imprimer dès l'achat sur Etsy.</p>
     </div>
-    <div class="guides four">
+    <div class="guides">
       <article class="guide">
-        <div class="cover c4">
-          <img class="real" src="https://m.media-amazon.com/images/I/51p53ci-MYL._SL800_.jpg" alt="Couverture du livre « Carnet de santé de mon chien »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
-          <div><div class="series">Bon Toutou · À imprimer</div><div class="kind">Pour le maître</div></div>
-          <h3>Carnet de santé du chien</h3>
+        <div class="cover c7">
+          <img class="real" src="https://m.media-amazon.com/images/I/51oUMLJsgYL._SL800_.jpg" alt="Couverture du livre « Toutou et le doudou perdu »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <div><div class="series">Bon Toutou · Album illustré</div><div class="kind">3 à 6 ans</div></div>
+          <h3>Toutou et le doudou perdu</h3>
         </div>
-        <p>Vaccins, vermifuges, antiparasitaires, courbe de poids et visites chez le vétérinaire, tout au même endroit. Une jolie idée de cadeau pour un propriétaire de chien.</p>
-        <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4610898436/carnet-de-sante-chien-a-imprimer-suivi" target="_blank" rel="noopener"><span>PDF</span>Etsy</a>
-          <a class="shop amz" href="https://www.amazon.fr/dp/B0HQVN39ZK" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
-      </article>
-      <article class="guide">
-        <div class="cover c8">
-          <img class="real" src="https://i.etsystatic.com/39428780/r/il/af2f26/8851373030/il_794xN.8851373030_8iuo.jpg" alt="Aperçu du quiz des amoureux des chiens" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
-          <div><div class="series">Bon Toutou · Jeu à imprimer</div><div class="kind">7 à 99 ans</div></div>
-          <h3>Le quiz des amoureux des chiens</h3>
-        </div>
-        <p>60 cartes questions-réponses en 3 niveaux (facile, moyen, expert) sur les races, le comportement, la santé et les chiens célèbres. De 2 à 12 joueurs : le premier à 15 os devient «&nbsp;Super Toutou&nbsp;».</p>
-        <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4616444363/quiz-chien-a-imprimer-60-questions-en-3" target="_blank" rel="noopener"><span>PDF</span>Etsy</a></div>
+        <p>Une histoire tendre sur l'amitié, à lire le soir avant de dormir : Bon Toutou part à la recherche d'un doudou perdu.</p>
+        <div class="buy"><a class="shop amz" href="https://www.amazon.fr/dp/B0HR588V4F" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
       </article>
       <article class="guide">
         <div class="cover c5">
           <img class="real" src="https://m.media-amazon.com/images/I/514KXntkxLL._SL800_.jpg" alt="Couverture du livre « L'Enquête de l'Avent »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
-          <div><div class="series">Bon Toutou · À imprimer</div><div class="kind">6 à 11 ans</div></div>
+          <div><div class="series">Les enquêtes de Bon Toutou</div><div class="kind">6 à 11 ans</div></div>
           <h3>Calendrier de l'Avent enquête</h3>
         </div>
         <p>Un escape game de Noël : 24 énigmes, une par jour, à résoudre avec un chien détective jusqu'au 24 décembre.</p>
@@ -324,20 +331,44 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
         <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4609073049/livre-de-coloriage-chiot-a-imprimer-20" target="_blank" rel="noopener"><span>PDF</span>Etsy</a>
           <a class="shop amz" href="https://www.amazon.fr/dp/B0HR21MJZ7" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section id="imprimables">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Pour les maîtres</p>
+        <h2>Le carnet et le quiz</h2>
+      </div>
+      <p>Pour suivre la santé de votre chien au quotidien, et pour tester vos connaissances en famille. Deux jolies idées de cadeau pour un amoureux des chiens.</p>
+    </div>
+    <div class="guides duo">
       <article class="guide">
-        <div class="cover c7">
-          <img class="real" src="https://m.media-amazon.com/images/I/51oUMLJsgYL._SL800_.jpg" alt="Couverture du livre « Toutou et le doudou perdu »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
-          <div><div class="series">Bon Toutou · Album illustré</div><div class="kind">3 à 6 ans</div></div>
-          <h3>Toutou et le doudou perdu</h3>
+        <div class="cover c4">
+          <img class="real" src="https://m.media-amazon.com/images/I/51p53ci-MYL._SL800_.jpg" alt="Couverture du livre « Carnet de santé de mon chien »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <div><div class="series">Bon Toutou · À imprimer</div><div class="kind">Suivi vétérinaire</div></div>
+          <h3>Carnet de santé du chien</h3>
         </div>
-        <p>Une histoire tendre sur l'amitié, à lire le soir avant de dormir : Bon Toutou part à la recherche d'un doudou perdu.</p>
-        <div class="buy"><a class="shop amz" href="https://www.amazon.fr/dp/B0HR588V4F" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
+        <p>Vaccins, vermifuges, antiparasitaires, courbe de poids et visites chez le vétérinaire, tout au même endroit. Une jolie idée de cadeau pour un propriétaire de chien.</p>
+        <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4610898436/carnet-de-sante-chien-a-imprimer-suivi" target="_blank" rel="noopener"><span>PDF</span>Etsy</a>
+          <a class="shop amz" href="https://www.amazon.fr/dp/B0HQVN39ZK" target="_blank" rel="noopener"><span>Papier</span>Amazon</a></div>
+      </article>
+      <article class="guide">
+        <div class="cover c8">
+          <img class="real" src="https://i.etsystatic.com/39428780/r/il/af2f26/8851373030/il_794xN.8851373030_8iuo.jpg" alt="Aperçu du quiz des amoureux des chiens" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <div><div class="series">Bon Toutou · Jeu à imprimer</div><div class="kind">7 à 99 ans</div></div>
+          <h3>Le quiz des amoureux des chiens</h3>
+        </div>
+        <p>60 cartes questions-réponses en 3 niveaux (facile, moyen, expert) sur les races, le comportement, la santé et les chiens célèbres. De 2 à 12 joueurs : le premier à 15 os devient «&nbsp;Super Toutou&nbsp;».</p>
+        <div class="buy"><a class="shop etsy" href="https://www.etsy.com/fr/listing/4616444363/quiz-chien-a-imprimer-60-questions-en-3" target="_blank" rel="noopener"><span>PDF</span>Etsy</a></div>
       </article>
     </div>
   </div>
 </section>
 
-<section id="outils" style="padding-top:0">
+<section id="outils">
   <div class="wrap">
     <div class="head">
       <div>
@@ -488,6 +519,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
 <footer>
   <div class="wrap">
     <span>© 2026 Bon Toutou · Guides pour maîtres de chien et livres pour enfants</span>
+    <span><a href="#guides">Les guides</a> · <a href="#enfants">Enfants</a> · <a href="#imprimables">Carnet et quiz</a> · <a href="#outils">Outils gratuits</a></span>
     <span><a href="https://www.etsy.com/fr/shop/BonToutouEditions" target="_blank" rel="noopener">Etsy : BonToutouEditions</a> · <a href="https://www.amazon.fr/s?k=%22Les+guides+Bon+Toutou%22" target="_blank" rel="noopener">Amazon</a></span>
   </div>
 </footer>
