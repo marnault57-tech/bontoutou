@@ -14,6 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%23e2b93b'/%3E%3Cg fill='%2318263f'%3E%3Cellipse cx='20' cy='25' rx='7' ry='6'/%3E%3Cellipse cx='11.5' cy='17' rx='3' ry='3.8'/%3E%3Cellipse cx='17' cy='11.5' rx='3' ry='3.8'/%3E%3Cellipse cx='23' cy='11.5' rx='3' ry='3.8'/%3E%3Cellipse cx='28.5' cy='17' rx='3' ry='3.8'/%3E%3C/g%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-family:system-ui,sans-serif;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Bon Toutou</title>
+<script>function fitCover(img){var c=img.parentNode;if(img.naturalWidth&&img.naturalHeight){c.style.aspectRatio=img.naturalWidth+" / "+img.naturalHeight;}c.classList.add("fit");img.classList.add("ok");}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Les livres Bon Toutou", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Book", "name": "Éduquer son chiot", "inLanguage": "fr", "author": {"@type": "Person", "name": "Mathieu A"}, "image": "https://m.media-amazon.com/images/I/61kaX+xIFxL._SL800_.jpg", "url": "https://www.amazon.fr/dp/B0HQJYQF5L"}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Book", "name": "Bien nourrir son chien", "inLanguage": "fr", "author": {"@type": "Person", "name": "Mathieu A"}, "image": "https://m.media-amazon.com/images/I/61-hy1IwGhL._SL800_.jpg", "url": "https://www.amazon.fr/dp/B0HQJKVSPQ"}}, {"@type": "ListItem", "position": 3, "item": {"@type": "Book", "name": "Les bases de l'obéissance", "inLanguage": "fr", "author": {"@type": "Person", "name": "Mathieu A"}, "image": "https://m.media-amazon.com/images/I/61sURnjQMnL._SL800_.jpg", "url": "https://www.amazon.fr/dp/B0HR26ZFVK"}}, {"@type": "ListItem", "position": 4, "item": {"@type": "Book", "name": "Carnet de santé de mon chien", "inLanguage": "fr", "author": {"@type": "Person", "name": "Mathieu A"}, "image": "https://m.media-amazon.com/images/I/51p53ci-MYL._SL800_.jpg", "url": "https://www.amazon.fr/dp/B0HQVN39ZK"}}, {"@type": "ListItem", "position": 5, "item": {"@type": "Book", "name": "L'Enquête de l'Avent", "inLanguage": "fr", "author": {"@type": "Person", "name": "Mathieu A"}, "image": "https://m.media-amazon.com/images/I/514KXntkxLL._SL800_.jpg", "url": "https://www.amazon.fr/dp/B0HQVMJC4K"}}, {"@type": "ListItem", "position": 6, "item": {"@type": "Book", "name": "Les aventures du petit chiot", "inLanguage": "fr", "author": {"@type": "Person", "name": "Mathieu A"}, "image": "https://m.media-amazon.com/images/I/51lZMZ1koUL._SL800_.jpg", "url": "https://www.amazon.fr/dp/B0HR21MJZ7"}}, {"@type": "ListItem", "position": 7, "item": {"@type": "Book", "name": "Toutou et le doudou perdu", "inLanguage": "fr", "author": {"@type": "Person", "name": "Mathieu A"}, "image": "https://m.media-amazon.com/images/I/51oUMLJsgYL._SL800_.jpg", "url": "https://www.amazon.fr/dp/B0HR588V4F"}}]}</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,8 +93,10 @@ section{padding-block:72px}
 .pill.ok{background:#2f8a57;color:#fff}
 .pill.soon{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1.5px var(--line)}
 .c4{background:#5b4a8a}.c5{background:#1f6f78}.c6{background:#b8762a}.c7{background:#c0546b}.c8{background:#3c5a99}
-.cover img.real{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--bg);z-index:2;opacity:0;transition:opacity .3s}
+.cover img.real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;opacity:0;transition:opacity .3s}
 .cover img.real.ok{opacity:1}
+.cover.fit{padding:0;box-shadow:0 6px 18px rgba(24,38,63,.18)}
+.cover.fit::after{display:none}
 .guides.duo{grid-template-columns:1fr 1fr}
 .guides.duo .guide{display:grid;grid-template-columns:42% 1fr;grid-template-rows:1fr auto;column-gap:22px;row-gap:16px;align-items:start}
 .guides.duo .cover{grid-row:1/3}
@@ -254,7 +257,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
     <div class="guides">
       <article class="guide">
         <div class="cover c1">
-          <img class="real" src="https://m.media-amazon.com/images/I/61kaX+xIFxL._SL800_.jpg" alt="Couverture du livre « Éduquer son chiot »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://m.media-amazon.com/images/I/61kaX+xIFxL._SL800_.jpg" alt="Couverture du livre « Éduquer son chiot »" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Bon Toutou · Guide</div><div class="num">01</div></div>
           <h3>Éduquer son chiot</h3>
         </div>
@@ -266,7 +269,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
       </article>
       <article class="guide">
         <div class="cover c2">
-          <img class="real" src="https://m.media-amazon.com/images/I/61-hy1IwGhL._SL800_.jpg" alt="Couverture du livre « Bien nourrir son chien »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://m.media-amazon.com/images/I/61-hy1IwGhL._SL800_.jpg" alt="Couverture du livre « Bien nourrir son chien »" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Bon Toutou · Guide</div><div class="num">02</div></div>
           <h3>Bien nourrir son chien</h3>
         </div>
@@ -278,7 +281,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
       </article>
       <article class="guide">
         <div class="cover c3">
-          <img class="real" src="https://m.media-amazon.com/images/I/61sURnjQMnL._SL800_.jpg" alt="Couverture du livre « Les bases de l'obéissance »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://m.media-amazon.com/images/I/61sURnjQMnL._SL800_.jpg" alt="Couverture du livre « Les bases de l'obéissance »" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Bon Toutou · Guide</div><div class="num">03</div></div>
           <h3>Les bases de l'obéissance</h3>
         </div>
@@ -304,7 +307,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
     <div class="guides">
       <article class="guide">
         <div class="cover c7">
-          <img class="real" src="https://m.media-amazon.com/images/I/51oUMLJsgYL._SL800_.jpg" alt="Couverture du livre « Toutou et le doudou perdu »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://m.media-amazon.com/images/I/51oUMLJsgYL._SL800_.jpg" alt="Couverture du livre « Toutou et le doudou perdu »" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Bon Toutou · Album illustré</div><div class="kind">3 à 6 ans</div></div>
           <h3>Toutou et le doudou perdu</h3>
         </div>
@@ -313,7 +316,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
       </article>
       <article class="guide">
         <div class="cover c5">
-          <img class="real" src="https://m.media-amazon.com/images/I/514KXntkxLL._SL800_.jpg" alt="Couverture du livre « L'Enquête de l'Avent »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://m.media-amazon.com/images/I/514KXntkxLL._SL800_.jpg" alt="Couverture du livre « L'Enquête de l'Avent »" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Les enquêtes de Bon Toutou</div><div class="kind">6 à 11 ans</div></div>
           <h3>Calendrier de l'Avent enquête</h3>
         </div>
@@ -323,7 +326,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
       </article>
       <article class="guide">
         <div class="cover c6">
-          <img class="real" src="https://m.media-amazon.com/images/I/51lZMZ1koUL._SL800_.jpg" alt="Couverture du livre « Les aventures du petit chiot »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://m.media-amazon.com/images/I/51lZMZ1koUL._SL800_.jpg" alt="Couverture du livre « Les aventures du petit chiot »" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Bon Toutou · À imprimer</div><div class="kind">Dès 3 ans</div></div>
           <h3>Livre de coloriage chiot</h3>
         </div>
@@ -347,7 +350,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
     <div class="guides duo">
       <article class="guide">
         <div class="cover c4">
-          <img class="real" src="https://m.media-amazon.com/images/I/51p53ci-MYL._SL800_.jpg" alt="Couverture du livre « Carnet de santé de mon chien »" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://m.media-amazon.com/images/I/51p53ci-MYL._SL800_.jpg" alt="Couverture du livre « Carnet de santé de mon chien »" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Bon Toutou · À imprimer</div><div class="kind">Suivi vétérinaire</div></div>
           <h3>Carnet de santé du chien</h3>
         </div>
@@ -357,7 +360,7 @@ footer .wrap{padding-block:32px 48px;display:flex;flex-wrap:wrap;gap:16px;justif
       </article>
       <article class="guide">
         <div class="cover c8">
-          <img class="real" src="https://i.etsystatic.com/39428780/r/il/af2f26/8851373030/il_794xN.8851373030_8iuo.jpg" alt="Aperçu du quiz des amoureux des chiens" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+          <img class="real" src="https://i.etsystatic.com/39428780/r/il/af2f26/8851373030/il_794xN.8851373030_8iuo.jpg" alt="Aperçu du quiz des amoureux des chiens" loading="lazy" decoding="async" onload="fitCover(this)" onerror="this.remove()">
           <div><div class="series">Bon Toutou · Jeu à imprimer</div><div class="kind">7 à 99 ans</div></div>
           <h3>Le quiz des amoureux des chiens</h3>
         </div>
