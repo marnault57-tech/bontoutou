@@ -62,3 +62,13 @@ L'étagère est prévue pour 4 livres par ligne ; au-delà, c'est correct aussi 
 - Vérifier le rendu avec Playwright (bureau 1280 px et mobile 390 px, aucune largeur > viewport, pas d'erreur JS).
 - Commit en français, clair (« Ajout de … »), puis `git push origin main`.
 - Ne jamais supprimer un produit du site sans l'accord de Mathieu, même s'il a disparu d'Etsy ou d'Amazon : le signaler seulement.
+
+## Améliorations hebdomadaires
+Une fois par semaine, une amélioration du site est faite automatiquement. Règles :
+- UNE amélioration par semaine, petite et concrète, terminée et vérifiée. Pas de refonte complète.
+- Garder l'identité visuelle (couleurs, polices, logo patte, médaille), le contenu existant et tous les produits.
+- Ne rien inventer : pas de faux avis, pas de fausses notes, pas de chiffres de ventes, pas de prix, pas de promesses de livraison. Les textes viennent des fiches Etsy et Amazon ou de ce que Mathieu a dit.
+- Pas d'images de marques, de personnages connus ou de personnes réelles.
+- Les outils payants en crédits (génération d'images, de vidéos, de voix) : seulement si l'amélioration de la semaine en a vraiment besoin, une seule génération, jamais de relance.
+- Noter chaque amélioration dans AMELIORATIONS.md (date, ce qui a changé, pourquoi), et piocher l'idée suivante dans la liste d'idées de ce fichier, en commençant par le haut.
+- Si une idée demande une décision de Mathieu (nouveau texte sur lui, nouvelle section importante, nom de domaine…), ne pas la faire : la lui proposer dans le message de fin.
